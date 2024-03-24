@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title> Unsplash Model</title>
+   <link rel="stylesheet" href="styles.css">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"> <!-- Font Awesome for icons -->
+</head>
+<style>
+    /* Reset default browser styles */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+.navbar {
+    background-color: #333;
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 30px;
+}
+
+.navbar .logo a {
+    font-size: 24px;
+    font-weight: bold;
+    text-decoration: none;
+    color: #fff;
+}
+
+.navbar ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+.navbar ul li {
+    margin-left: 20px;
+}
+
+.navbar ul li a {
+    text-decoration: none;
+    color: #fff;
+    font-size: 18px;
+    transition: all 0.3s ease;
+}
+
+.navbar ul li a:hover {
+    color: #ffa500;
+}
+
+.menu-toggle {
+    display: none;
+    cursor: pointer;
+}
+
+@media screen and (max-width: 768px) {
+    .navbar ul {
+        display: none;
+    }
+    .menu-toggle {
+        display: block;
+    }
+    .navbar.active ul {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        width: 100%;
+        background-color: #333;
+    }
+    .navbar.active ul li {
+        margin: 10px;
+    }
+}
+
+main {
+    padding: 20px;
+}
+
+.hero {
+    background-image: url('https://source.unsplash.com/1600x900/?nature');
+    background-size: cover;
+    background-position: center;
+    color: #fff;
+    text-align: center;
+    padding: 100px 0;
+}
+
+.hero h2 {
+    font-size: 36px;
+    margin-bottom: 20px;
+}
+
+.hero p {
+    font-size: 18px;
+    margin-bottom: 30px;
+}
+
+.hero button {
+    background-color: #333;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+.featured-photos {
+    margin-top: 50px;
+}
+
+.photo-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 20px;
+}
+
+.photo {
+    overflow: hidden;
+    border-radius: 5px;
+}
+
+.photo img {
+    width: 100%;
+    height: 100%;
+    transition: transform 1.3s ease;
+}
+
+.photo:hover img {
+    transform: scale(1.1);
+}
+
+footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 1px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+</style>
+<body>
+<nav class="navbar">
+   <div class="logo">
+      <a href="#">Unsplash for my STEM project</a>
+   </div>
+   <ul class="nav-links">
+      <li><a href="#">Home</a></li>
+      <li><a href="#">Photos</a></li>
+      <li><a href="#">Categories</a></li>
+      <li><a href="#">About</a></li>
+      <li><a href="#">Contact</a></li>
+   </ul>
+   <div class="menu-toggle">
+      <i class="fas fa-bars"></i>
+   </div>
+</nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <h2>Discover Beautiful, Free Images</h2>
+            <p>Explore curated collections of high-quality photos, graphics, and more from the world's leading photographers.</p>
+            <button>Browse Photos</button>
+        </section>
+
+        <section class="featured-photos">
+            <h2>Featured Photos</h2>
+            <div class="photo-grid">
+                <!-- Featured photos will be dynamically loaded here -->
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; Idea by Kush, Created by Ryan and Kush in collaboration with Chat GPT</p>
+    </footer>
+
+    <script src="scripts.js">
+        document.addEventListener('DOMContentLoaded', function() {
+    // Simulated function to fetch featured photos from an API
+    function fetchFeaturedPhotos() {
+        // Simulated data for featured photos
+        const featuredPhotos = [
+            'https://source.unsplash.com/400x300/?nature',
+            'https://source.unsplash.com/400x300/?travel',
+            'https://source.unsplash.com/400x300/?architecture',
+            'https://source.unsplash.com/400x300/?food',
+            'https://source.unsplash.com/400x300/?technology',
+            'https://source.unsplash.com/400x300/?business',
+            'https://source.unsplash.com/400x300/?fashion',
+            'https://source.unsplash.com/400x300/?music',
+            'https://source.unsplash.com/400x300/?fitness',
+            'https://source.unsplash.com/400x300/?nature',
+            'https://source.unsplash.com/400x300/?travel',
+            'https://source.unsplash.com/400x300/?architecture',
+            'https://source.unsplash.com/400x300/?food',
+            'https://source.unsplash.com/400x300/?technology',
+            'https://source.unsplash.com/400x300/?business',
+            'https://source.unsplash.com/400x300/?fashion',
+            'https://source.unsplash.com/400x300/?music',
+            'https://source.unsplash.com/400x300/?fitness',
+            'https://source.unsplash.com/400x300/?nature',
+            'https://source.unsplash.com/400x300/?travel',
+            'https://source.unsplash.com/400x300/?architecture',
+            'https://source.unsplash.com/400x300/?food',
+            'https://source.unsplash.com/400x300/?technology',
+            'https://source.unsplash.com/400x300/?business',
+            'https://source.unsplash.com/400x300/?fashion',
+            'https://source.unsplash.com/400x300/?music',
+            'https://source.unsplash.com/400x300/?fitness',
+            'https://source.unsplash.com/400x300/?nature',
+            'https://source.unsplash.com/400x300/?travel',
+            'https://source.unsplash.com/400x300/?architecture',
+            'https://source.unsplash.com/400x300/?food',
+            'https://source.unsplash.com/400x300/?technology',
+            'https://source.unsplash.com/400x300/?business',
+            'https://source.unsplash.com/400x300/?fashion',
+            'https://source.unsplash.com/400x300/?music',
+            'https://source.unsplash.com/400x300/?fitness',
+        ];
+
+        // Get the photo grid container
+        const photoGrid = document.querySelector('.photo-grid');
+
+        // Loop through the featured photos and create elements for each
+        featuredPhotos.forEach(photoUrl => {
+            const photoDiv = document.createElement('div');
+            photoDiv.classList.add('photo');
+
+            const img = document.createElement('img');
+            img.src = photoUrl;
+            img.alt = 'Featured Photo';
+
+            photoDiv.appendChild(img);
+            photoGrid.appendChild(photoDiv);
+        });
+    }
+
+    // Call the function to fetch and display featured photos
+    fetchFeaturedPhotos();
+});
+
+    </script>
+</body>
+</html>
